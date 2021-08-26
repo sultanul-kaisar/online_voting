@@ -13,9 +13,9 @@ class Vote extends Model
         return $this->belongsTo('App\Model\VoteCategory');
     }
 
-    public function candidates()
+    public function candidate()
     {
-        return $this->hasMany('App\Model\Candidate');
+        return $this->belongsTo('App\Model\Candidate');
     }
 
     public function users()

@@ -37,16 +37,15 @@ class VoterController extends Controller
 
     public function create()
     {
-        $voters = Voter::where('status', 'active')->get();
-        return view('admin.voters.create', compact('voters'));
+        return view('admin.voters.create');
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'name'                   => 'required|min:3|max:50',
-            'email'                  => 'required|email|unique:voters',
-            'password'               => 'required|min:8|confirmed|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+            'email'                  => 'required|email|unique:users',
+            'password'               => 'required|confirmed',
             'password_confirmation'  => 'required'
         ]);
 

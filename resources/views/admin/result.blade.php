@@ -29,13 +29,7 @@
                             <div class="card sale-card" style="min-height:550px!important;">
                                 <div class="card-header">
                                     <div class="card-header-right col-md-12 ml-2">
-                                        <h4 class="sub-title">Select Vote Purpose</h4>
-                                        <select name="vote_category_id" class="form-control form-control-default">
-                                            <option value="">Select Vote Purpose</option>
-                                            @foreach($vote_categories as $voteCategory)
-                                                <option value="{{ $voteCategory->id }}">{{ $voteCategory->title }}</option>
-                                            @endforeach
-                                        </select>
+
                                     </div>
                                 </div>
 
@@ -45,24 +39,19 @@
                                             <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
                                                 <tr>
-                                                    <th>Candidate Name</th>
-                                                    <th>Image</th>
+                                                    <th>Vote Category</th>
+                                                    <th>Vote Candidate</th>
                                                     <th>Total Vote</th>
                                                 </tr>
                                                 </thead>
 
                                                 <tbody>
-                                                    @foreach($candidates as $candidate)
+                                                    @foreach($voteResults as $voteResult)
                                                     <tr>
-                                                        <td>{{$candidate->name}}</td>
-                                                        <td style="width:20%;">
-                                                            <a href="{{ asset('storage/uploads/candidates/'.$candidate->image) }}" data-toggle="lightbox">
-                                                                <img src="{{ asset('storage/uploads/candidates/'.$candidate->image) }}" class="img-fluid" style="width: 50%!important;">
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            
-                                                        </td>
+                                                        <td>{{$voteResult->vote_category->title}}</td>
+                                                        <td>{{$voteResult->candidate->name}}</td>
+
+                                                        <td>{{$voteResult->total}}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

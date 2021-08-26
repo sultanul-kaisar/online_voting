@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin'], function () {
         //VOTERS
         Route::resource('voter', 'VoterController')->except(['show']);
         Route::get('result', 'VoteController@result')->name('admin.result');
-        Route::resource('count', 'VoteController')->except(['show']);
+        Route::get('count', 'VoteController@count')->name('admin.count');
 
 
 
